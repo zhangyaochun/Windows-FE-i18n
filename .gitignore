@@ -1,0 +1,9 @@
+*.DS_store
+*.log
+
+/node_modules/
+/app/components
+/dist/
+/test/output/
+/.sass-cache/
+/.tmp/
