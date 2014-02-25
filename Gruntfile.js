@@ -1,6 +1,7 @@
 'use strict';
 
 var fs = require('fs');
+var util = require('util');
 
 module.exports = function (grunt) {
     // load all grunt tasks
@@ -124,11 +125,12 @@ module.exports = function (grunt) {
         fs.mkdirSync(i18nNlsPath + '/' + nls);
 
         var content;
-        fs.readdirSync(pathConfig.app + '/nls/' + nls).forEach(function (file){
+        var template = 'define({"' + nls + '" : true});';
+        fs.readdirSync(pathConfig.app + '/nls/' + nls).forEach(function (file) {
             if (file.substr(0, 1) === '.') {
                 return;
             } else {
-                grunt.file.write(i18nNlsPath + '/' + file, 'define({"' + nls + '" : true});');
+                grunt.file.write(i18nNlsPath + '/' + file, util.format(template, nls));
             }
         });
         runSubTask('cp -r ' + pathConfig.app + '/nls/' + nls + ' ' + i18nNlsPath);
@@ -179,12 +181,6 @@ module.exports = function (grunt) {
         runSubTask('mv ' + pathConfig.dist + '/images/ ' + pathConfig.dist + '/i18n/' + nls + '/');
     });
 
-    grunt.registerTask('copyImage', function (nls) {
-
-        var imagesPath = pathConfig.tmp + '/i18n/' + nls + '/images';
-        runSubTask('cp -r ' + pathConfig.tmp + '/images' + ' ' + imagesPath);
-    });
-
     grunt.registerTask('clean', function (nls) {
         deleteFolderRecursive(pathConfig.tmp);
         deleteFolderRecursive(pathConfig.dist + '/images/');
@@ -207,7 +203,6 @@ module.exports = function (grunt) {
                 'createScssConfig:' + project,
                 'compass:dist',
                 'copyCss:' + nls,
-                //'copyImage:' + nls,
                 'copy:nls',
                 'imagemin',
                 'copy:dist',
