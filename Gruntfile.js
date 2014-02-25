@@ -125,12 +125,12 @@ module.exports = function (grunt) {
         fs.mkdirSync(i18nNlsPath + '/' + nls);
 
         var content;
-        var template = 'define({"' + nls + '" : true});';
+        var template = util.format('define({"%s" : true});', nls);
         fs.readdirSync(pathConfig.app + '/nls/' + nls).forEach(function (file) {
             if (file.substr(0, 1) === '.') {
                 return;
             } else {
-                grunt.file.write(i18nNlsPath + '/' + file, util.format(template, nls));
+                grunt.file.write(i18nNlsPath + '/' + file, template);
             }
         });
         runSubTask('cp -r ' + pathConfig.app + '/nls/' + nls + ' ' + i18nNlsPath);
