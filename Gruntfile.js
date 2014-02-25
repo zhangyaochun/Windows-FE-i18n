@@ -1,10 +1,7 @@
 'use strict';
 
-var lrSnippet = require('connect-livereload')();
-
-var mountFolder = function (connect, dir) {
-    return connect.static(require('path').resolve(dir));
-};
+var fs = require('fs');
+var util = require('util');
 
 module.exports = function (grunt) {
     // load all grunt tasks
@@ -14,134 +11,58 @@ module.exports = function (grunt) {
     var pathConfig = {
         app : 'app',
         dist : 'dist',
-        tmp : '.tmp',
-        test : 'test'
+        tmp : 'tmp'
     };
 
     grunt.initConfig({
         paths : pathConfig,
-        watch : {
-            compass : {
-                files : ['<%= paths.app %>/compass/{,*/}*/{,*/}*.{scss,sass,png,ttf,otf}'],
-                tasks : ['compass:server']
-            },
-            test : {
-                files : ['<%= paths.app %>/javascripts/**/*.js'],
-                tasks : ['jshint:test', 'karma:server:run'],
-                options : {
-                    spawn : false
-                }
-            },
-            livereload: {
-                files: [
-                    '<%= paths.app %>/**/*.html',
-                    '<%= paths.app %>/javascripts/**/*.js',
-                    '<%= paths.app %>/images/**/*.{webp,jpg,jpeg,png,gif,ttf,otf}',
-                    '<%= paths.tmp %>/stylesheets/**/*.css',
-                    '<%= paths.tmp %>/images/**/*.{webp,jpg,jpeg,png,gif,ttf,otf}'
-                ],
-                options : {
-                    livereload : true,
-                    spawn : false
-                }
-            }
-        },
-        connect : {
-            options : {
-                port : 9999,
-                hostname : '0.0.0.0'
-            },
-            server : {
-                options : {
-                    middleware : function (connect) {
-                        return [
-                            lrSnippet,
-                            mountFolder(connect, pathConfig.tmp),
-                            mountFolder(connect, pathConfig.app)
-                        ];
-                    }
-                }
-            }
-        },
-        open: {
-            server : {
-                path : 'http://127.0.0.1:<%= connect.options.port %>',
-                app : 'Google Chrome Canary'
-            }
-        },
-        clean : {
-            dist : ['<%= paths.tmp %>', '<%= paths.dist %>'],
-            server : '<%= paths.tmp %>'
-        },
-        useminPrepare : {
-            html : ['<%= paths.app %>/**/*.html'],
-            options : {
-                dest : '<%= paths.dist %>'
-            }
-        },
-        usemin: {
-            html : ['<%= paths.dist %>/**/*.html'],
-            css : ['<%= paths.dist %>/stylesheets/**/*.css'],
-            options : {
-                dirs : ['<%= paths.dist %>'],
-                assetsDirs : ['<%= paths.dist %>']
-            }
-        },
-        htmlmin : {
-            dist : {
-                files : [{
-                    expand : true,
-                    cwd : '<%= paths.app %>',
-                    src : ['**/*.html'],
-                    dest : '<%= paths.dist %>'
-                }]
-            }
-        },
         copy : {
-            dist : {
+            tmp : {
                 files : [{
                     expand : true,
                     dot : true,
                     cwd : '<%= paths.app %>',
+                    dest : '<%= paths.tmp %>',
+                    src : [
+                        'images/**/*.{png,gif}',
+                        'stylesheets/**/*.{sass,scss,png,ttf}'
+                    ]
+                }]
+            },
+            nls : {
+                files : [{
+                    expand : true,
+                    dot : true,
+                    cwd : '<%= paths.tmp %>',
                     dest : '<%= paths.dist %>',
                     src : [
-                        'images/**/*.{webp,gif,png,jpg,jpeg,ttf,otf}'
+                        'i18n/**/*.js',
+                    ]
+                }]
+            },
+            dist : {
+                files : [{
+                    expand : true,
+                    dot : true,
+                    cwd : '<%= paths.tmp %>',
+                    dest : '<%= paths.dist %>',
+                    src : [
+                        'i18n/**/stylesheets/{,*/}*.{css,ttf}'
                     ]
                 }]
             }
         },
         compass : {
             options : {
-                sassDir : '<%= paths.app %>/compass/sass',
-                imagesDir : '<%= paths.app %>/compass/images',
-                fontsDir : '<%= paths.app %>/images/fonts',
+                sassDir : '<%= paths.tmp %>/stylesheets/compass/sass',
+                cssDir : '<%= paths.tmp %>/stylesheets',
+                imagesDir : '<%= paths.tmp %>/stylesheets/compass/images',
+                generatedImagesDir : '<%= paths.tmp %>/images',
                 relativeAssets : true
             },
             dist : {
                 options : {
-                    cssDir : '<%= paths.dist %>/stylesheets',
-                    generatedImagesDir : '<%= paths.dist %>/images',
-                    outputStyle : 'compressed',
-                    environment : 'production'
-                }
-            },
-            server : {
-                options : {
-                    cssDir : '<%= paths.tmp %>/stylesheets',
-                    generatedImagesDir : '<%= paths.tmp %>/images',
-                    debugInfo : true,
-                    environment : 'development'
-                }
-            }
-        },
-        rev: {
-            dist: {
-                files: {
-                    src: [
-                        '<%= paths.dist %>/javascripts/**/*.js',
-                        '<%= paths.dist %>/stylesheets/**/*.css',
-                        '<%= paths.dist %>/images/**/*.{webp,gif,png,jpg,jpeg,ttf,otf}'
-                    ]
+                    outputStyle : 'compressed'
                 }
             }
         },
@@ -149,106 +70,148 @@ module.exports = function (grunt) {
             dist : {
                 files : [{
                     expand : true,
-                    cwd : '<%= paths.dist %>/images',
+                    cwd : '<%= paths.tmp %>/images',
                     src : '**/*.{png,jpg,jpeg}',
                     dest : '<%= paths.dist %>/images'
                 }]
             }
-        },
-        requirejs : {
-            dist : {
-                options : {
-                    optimize : 'uglify',
-                    uglify : {
-                        toplevel : true,
-                        ascii_only : false,
-                        beautify : false
-                    },
-                    preserveLicenseComments : true,
-                    useStrict : false,
-                    wrap : true
-                }
-            }
-        },
-        concurrent: {
-            dist : ['copy:dist', 'compass:dist']
-        },
-        jshint : {
-            test : ['<%= paths.app %>/javascripts/**/*.js']
-        },
-        karma : {
-            options : {
-                configFile : '<%= paths.test %>/karma.conf.js',
-                browsers : ['Chrome_without_security']
-            },
-            server : {
-                reporters : ['progress'],
-                background : true
-            },
-            test : {
-                reporters : ['progress', 'junit', 'coverage'],
-                preprocessors : {
-                    '<%= paths.app %>/javascripts/**/*.js' : 'coverage'
-                },
-                junitReporter : {
-                    outputFile : '<%= paths.test %>/output/test-results.xml'
-                },
-                coverageReporter : {
-                    type : 'html',
-                    dir : '<%= paths.test %>/output/coverage/'
-                },
-                singleRun : true
-            },
-            travis : {
-                browsers : ['PhantomJS'],
-                reporters : ['progress'],
-                singleRun : true
-            }
-        },
-        bump : {
-            options : {
-                files : ['package.json', 'bower.json'],
-                updateConfigs : [],
-                commit : true,
-                commitMessage : 'Release v%VERSION%',
-                commitFiles : ['-a'],
-                createTag : true,
-                tagName : 'v%VERSION%',
-                tagMessage : 'Version %VERSION%',
-                push : false
-            }
         }
     });
 
-    grunt.registerTask('server', [
-        'clean:server',
-        'compass:server',
-        'connect:server',
-        'karma:server',
-        'open',
-        'watch'
-    ]);
+    var deleteFolderRecursive = function(path) {
+        if( fs.existsSync(path) ) {
+            fs.readdirSync(path).forEach(function(file,index){
+                var curPath = path + "/" + file;
+                if(fs.statSync(curPath).isDirectory()) {
+                    deleteFolderRecursive(curPath);
+                } else {
+                    fs.unlinkSync(curPath);
+                }
+            });
+            fs.rmdirSync(path);
+        }
+    };
 
-    grunt.registerTask('test', [
-        'jshint:test',
-        'karma:test'
-    ]);
+    var runSubTask = function (command) {
+        var exec = require('child_process').exec;
 
-    grunt.registerTask('test:travis', [
-        'jshint:test',
-        'karma:travis'
-    ]);
+        exec(command, function (error, stdout, stderr) {
+            if (stdout) {
+                console.log('stdout: ' + stdout);
+            }
 
-    grunt.registerTask('build', [
-        'clean:dist',
-        'concurrent:dist',
-        'useminPrepare',
-        'concat',
-        'uglify',
-        // 'requirejs:dist', // Uncomment this line if using RequireJS in your project
-        'imagemin',
-        'htmlmin',
-        'rev',
-        'usemin'
-    ]);
+            if (stderr) {
+                console.log('stderr: ' + stderr);
+            }
+
+            if (error) {
+                console.log('exec error: ' + error);
+            }
+        });
+    };
+
+    grunt.registerTask('processI18n', function (nls) {
+
+        deleteFolderRecursive(pathConfig.dist + '/i18n/' + nls);
+
+        var i18nPath = pathConfig.tmp + '/i18n';
+        fs.mkdirSync(i18nPath);
+
+        var i18nNlsPath = i18nPath + '/' + nls;
+        fs.mkdirSync(i18nNlsPath);
+
+        i18nNlsPath += '/nls';
+        fs.mkdirSync(i18nNlsPath);
+        fs.mkdirSync(i18nNlsPath + '/' + nls);
+
+        var content;
+        var template = 'define({"' + nls + '" : true});';
+        fs.readdirSync(pathConfig.app + '/nls/' + nls).forEach(function (file) {
+            if (file.substr(0, 1) === '.') {
+                return;
+            } else {
+                grunt.file.write(i18nNlsPath + '/' + file, util.format(template, nls));
+            }
+        });
+        runSubTask('cp -r ' + pathConfig.app + '/nls/' + nls + ' ' + i18nNlsPath);
+
+        var fd;
+        if (nls !== 'zh-cn') {
+            var mainScss = pathConfig.tmp + '/stylesheets/compass/sass/main.scss';
+            fd = fs.openSync(mainScss, 'a');
+
+            fs.writeSync(fd, '@import "_locale-' + nls + '.scss"');
+            fs.closeSync(fd);
+        }
+    });
+
+    grunt.registerTask('copyCss', function (nls) {
+
+        var stylePath = pathConfig.tmp + '/i18n/' + nls + '/stylesheets';
+        fs.mkdirSync(stylePath);
+        fs.readdirSync(pathConfig.tmp + '/stylesheets/').forEach(function (file){
+            if (file.substr(0, 1) === '.' || file === 'compass') {
+                return;
+            } else {
+                runSubTask('cp ' + pathConfig.tmp + '/stylesheets/' + file + ' ' + stylePath);
+            }
+        });
+    });
+
+    grunt.registerTask('createScssConfig', function (project) {
+
+        var filePath = pathConfig.tmp + '/stylesheets/compass/sass/_projectflag.scss';
+        var content = '';
+        switch (project) {
+        case 'WDJ':
+            content = '$PROJECT_FLAG : PROJECT_WD';
+            break;
+        case 'SUNING':
+            content = '$PROJECT_FLAG : PROJECT_SUNING';
+            break;
+        case 'TIANYIN':
+            content = '$PROJECT_FLAG : PROJECT_TIANYIN';
+            break;
+        }
+
+        grunt.file.write(filePath, content);
+    });
+
+    grunt.registerTask('mvImageMin', function (nls) {
+        runSubTask('mv ' + pathConfig.dist + '/images/ ' + pathConfig.dist + '/i18n/' + nls + '/');
+    });
+
+    grunt.registerTask('clean', function (nls) {
+        deleteFolderRecursive(pathConfig.tmp);
+        deleteFolderRecursive(pathConfig.dist + '/images/');
+        deleteFolderRecursive(pathConfig.dist + '/i18n/' + nls);
+    });
+
+    grunt.registerTask('build', function (project, nls) {
+
+        project = project ? project.toUpperCase() : 'WDJ';
+        var nlss = nls ? nls.toLowerCase().split(',') : '[zh-cn]';
+
+        console.log('project : ', project);
+        console.log('nls : ', nls);
+
+        nlss.forEach(function (nls) {
+            var taskList = [
+                'clean:' + nls,
+                'copy:tmp',
+                'processI18n:' + nls,
+                'createScssConfig:' + project,
+                'compass:dist',
+                'copyCss:' + nls,
+                'copy:nls',
+                'imagemin',
+                'copy:dist',
+                'mvImageMin:' + nls
+            ];
+
+            grunt.task.run(taskList);
+        });
+    });
+
+    grunt.registerTask('test:travis', ['build']);
 };
