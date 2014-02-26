@@ -190,7 +190,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', function (project, nls) {
 
         project = project ? project.toUpperCase() : 'WDJ';
-        var nlss = nls ? nls.toLowerCase().split(',') : '[zh-cn]';
+        var nlss = nls ? nls.toLowerCase().split(',') : ['zh-cn'];
 
         console.log('project : ', project);
         console.log('nls : ', nls);
