@@ -16,9 +16,6 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         paths : pathConfig,
-        clean : {
-            dist : ['<%= paths.tmp %>/', '<%= paths.dist %>/']
-        },
         copy : {
             tmp : {
                 files : [{
@@ -184,6 +181,12 @@ module.exports = function (grunt) {
         runSubTask('mv ' + pathConfig.dist + '/images/ ' + pathConfig.dist + '/i18n/' + nls + '/');
     });
 
+    grunt.registerTask('clean', function (nls) {
+        deleteFolderRecursive(pathConfig.tmp);
+        deleteFolderRecursive(pathConfig.dist + '/images/');
+        deleteFolderRecursive(pathConfig.dist + '/i18n/' + nls);
+    });
+
     grunt.registerTask('build', function (project, nls) {
 
         project = project ? project.toUpperCase() : 'WDJ';
@@ -194,7 +197,7 @@ module.exports = function (grunt) {
 
         nlss.forEach(function (nls) {
             var taskList = [
-                'clean:dist',
+                'clean:' + nls,
                 'copy:tmp',
                 'processI18n:' + nls,
                 'createScssConfig:' + project,
