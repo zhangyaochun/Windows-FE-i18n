@@ -78,8 +78,34 @@ module.exports = function (grunt) {
         }
     });
 
+    var copyFolderRecursive = function(path, dist, isDelete) {
+        isDelete = isDelete ? true : false;
+
+        if (!fs.existsSync(path)) {
+            return;
+        }
+
+        if (fs.statSync(path).isDirectory()) {
+            fs.readdirSync(path).forEach(function (file) {
+                var curPath = path + '/' +  file;
+                var distPath = dist + '/' + file;
+                if(fs.statSync(curPath).isDirectory()) {
+                    copyFolderRecursive(curPath, distPath, isDelete);
+                } else {
+                    grunt.file.copy(curPath, distPath);
+                    isDelete && fs.unlinkSync(curPath);
+                }
+            });
+            isDelete && fs.rmdirSync(path);
+        } else {
+            grunt.file.copy(path, dist);
+            isDelete && fs.unlinkSync(path);
+        }
+    }
+
+
     var deleteFolderRecursive = function(path) {
-        if( fs.existsSync(path) ) {
+        if (fs.existsSync(path)) {
             fs.readdirSync(path).forEach(function(file,index){
                 var curPath = path + "/" + file;
                 if(fs.statSync(curPath).isDirectory()) {
@@ -90,24 +116,6 @@ module.exports = function (grunt) {
             });
             fs.rmdirSync(path);
         }
-    };
-
-    var runSubTask = function (command) {
-        var exec = require('child_process').exec;
-
-        exec(command, function (error, stdout, stderr) {
-            if (stdout) {
-                console.log('stdout: ' + stdout);
-            }
-
-            if (stderr) {
-                console.log('stderr: ' + stderr);
-            }
-
-            if (error) {
-                console.log('exec error: ' + error);
-            }
-        });
     };
 
     grunt.registerTask('processI18n', function (nls) {
@@ -133,7 +141,7 @@ module.exports = function (grunt) {
                 grunt.file.write(i18nNlsPath + '/' + file, template);
             }
         });
-        runSubTask('cp -r ' + pathConfig.app + '/nls/' + nls + ' ' + i18nNlsPath);
+        copyFolderRecursive(pathConfig.app + '/nls/' + nls, i18nNlsPath + '/' + nls);
 
         var fd;
         if (nls !== 'zh-cn') {
@@ -153,7 +161,7 @@ module.exports = function (grunt) {
             if (file.substr(0, 1) === '.' || file === 'compass') {
                 return;
             } else {
-                runSubTask('cp ' + pathConfig.tmp + '/stylesheets/' + file + ' ' + stylePath);
+                copyFolderRecursive(pathConfig.tmp + '/stylesheets/' + file, stylePath + '/' + file);
             }
         });
     });
@@ -178,7 +186,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('mvImageMin', function (nls) {
-        runSubTask('mv ' + pathConfig.dist + '/images/ ' + pathConfig.dist + '/i18n/' + nls + '/');
+        copyFolderRecursive(pathConfig.dist + '/images/', pathConfig.dist + '/i18n/' + nls + '/images/', true);
     });
 
     grunt.registerTask('clean', function (nls) {
