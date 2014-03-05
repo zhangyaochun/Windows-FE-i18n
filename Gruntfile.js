@@ -195,6 +195,10 @@ module.exports = function (grunt) {
         deleteFolderRecursive(pathConfig.dist + '/i18n/' + nls);
     });
 
+    grunt.registerTask('copyImage', function (nls) {
+        copyFolderRecursive(pathConfig.tmp + '/images/', pathConfig.dist + '/images/');
+    });
+
     grunt.registerTask('build', function (project, nls) {
 
         project = project ? project.toUpperCase() : 'WDJ';
@@ -212,6 +216,7 @@ module.exports = function (grunt) {
                 'compass:dist',
                 'copyCss:' + nls,
                 'copy:nls',
+                'copyImage:' + nls,
                 'imagemin',
                 'copy:dist',
                 'mvImageMin:' + nls
