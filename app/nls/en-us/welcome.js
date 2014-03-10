@@ -1,6 +1,6 @@
 /*global define*/
 define({
-    CLOCK_DATE_FORMAT : 'MM / dd ',
+    CLOCK_DATE_FORMAT : 'MM dd ',
     OPEN_FOLDER : 'Open folder',
     TOP : 'Return to top',
 
@@ -59,27 +59,31 @@ define({
     GUIDE_REG_DESC : 'To turn on cloud albums you first have to register an account',
     GUIDE_REG_NOW : 'Register now',
     GUIDE_REG_ACCOUNT_PLACEHOLDER : 'Please use your phone number or email address',
-    GUIDE_REG_ACCOUNT_WARN : '您输入的好像不是一个邮箱/手机号',
-    GUIDE_REG_PASSWORD : '密码',
-    GUIDE_REG_PASSWORD_PLACEHOLDER : '最少 6 位数字或字符',
-    GUIDE_REG_PASSWORD_WARN : '请输入密码,密码长度应该大于 6 个字符',
-    GUIDE_REG_PSW_VERIFY_PLACEHOLDER : '再次输入密码',
-    GUIDE_REG_PSW_VERIFY_WARN : '两次输入的密码不一致',
-    GUIDE_REG_NICKNAME_WARN : '昵称不能少于一个字符',
-    GUIDE_REG_CAPTCHA : '验证码',
-    GUIDE_REG_PRAVICY : '同意 <a target="_default" href="#">最终用户条款</a>',
-    GUIDE_REG_LOGIN_WITH_ACCOUNT : '已有账号登陆',
-    GUIDE_REG_LOGIN_WITH_SNS : '合作账号登陆',
-    GUIDE_REG_LOGIN_AND_BACKUP : '登陆后开启云备份',
-    GUIDE_XIBAIBAI_START : '马上开洗',
-    GUIDE_XIBAIBAI_TIP2 :　'豌豆洗白白会帮您找出这些应用,并替换成官方版或没有广告的版本.',
-    GUIDE_XIBAIBAI_TIP3 : '立即使用豌豆洗白白享受放心应用的乐趣吧!',
+
+    // GUIDE_REG_ACCOUNT_WARN : '您输入的好像不是一个邮箱/手机号',
+    // GUIDE_REG_PASSWORD : '密码',
+    // GUIDE_REG_PASSWORD_PLACEHOLDER : '最少 6 位数字或字符',
+    // GUIDE_REG_PASSWORD_WARN : '请输入密码,密码长度应该大于 6 个字符',
+    // GUIDE_REG_PSW_VERIFY_PLACEHOLDER : '再次输入密码',
+    // GUIDE_REG_PSW_VERIFY_WARN : '两次输入的密码不一致',
+    // GUIDE_REG_NICKNAME_WARN : '昵称不能少于一个字符',
+    // GUIDE_REG_CAPTCHA : '验证码',
+    // GUIDE_REG_PRAVICY : '同意 <a target="_default" href="#">最终用户条款</a>',
+    // GUIDE_REG_LOGIN_WITH_ACCOUNT : '已有账号登陆',
+    // GUIDE_REG_LOGIN_WITH_SNS : '合作账号登陆',
+    // GUIDE_REG_LOGIN_AND_BACKUP : '登陆后开启云备份',
+    // GUIDE_XIBAIBAI_START : '马上开洗',
+    // GUIDE_XIBAIBAI_TIP2 :　'豌豆洗白白会帮您找出这些应用,并替换成官方版或没有广告的版本.',
+    // GUIDE_XIBAIBAI_TIP3 : '立即使用豌豆洗白白享受放心应用的乐趣吧!',
+
     GUIDE_STARTER_INSTALL_ALL : 'Install all',
     GUIDE_STARTER_TITLE : 'Must install apps',
     GUIDE_STARTER_TIP : 'Not many apps on your phone. You should try some of these star apps.',
     GUIDE_STARTER_APP_TIP : '{1} installations · {2}% positive reviews<br />{3}',
-    GUIDE_STARTER_GAME_TITLE : '必备游戏',
-    GUIDE_STARTER_GAME_TIP : '大家都在玩的热门游戏,您也装几个试试吧.',
+
+    // GUIDE_STARTER_GAME_TITLE : '必备游戏',
+    // GUIDE_STARTER_GAME_TIP : '大家都在玩的热门游戏,您也装几个试试吧.',
+
     GUIDE_TIPS : 'Tips',
     GUIDE_TIPS_TIP : 'More tips about SnapPea!',
     GUIDE_TIPS_READ_ALL : 'OK, got it!',
@@ -116,19 +120,19 @@ define({
     NO_MORE_3 : '',
     UPDATED : 'SnapPea was updated!',
 
-    READING_INFO_WARNING : 'Reading your phone\'s info, please wait'
+    READING_INFO_WARNING : '正在更新信息,请稍后再试'
 
     //ACCOUNT_UNLOGIN_TEXT : '点击此处开启个性主页'
 
-    // CLICK_TO_CHANGE : '点击更换',
-    // BACKUP_RESOTRE : '如何备份和恢复手机数据',
-    // WIFI : '如何使用 Wi-Fi  连接手机',
-    // APP : '如何安装本地应用',
-    // CONTACT : '如何使用豌豆荚管理联系人',
-    // RINGTONE : '为什么试听铃声没有声音',
-    // SETUP_RINGTONE : '如何快速设置手机铃声',
-    // IDENTIFY_CONTACT : '为什么不能识别设备上的联系人、短信或应用',
-    // ONLINE_GAME : '网游充值遇到问题怎么办',
-    // TRAFFIC : '「豌豆荚 Android 版」会消耗手机流量吗',
-    // EXPORT_CONTACT : '如何导入或导出我的联系人'
+    // CLICK_TO_CHANGE : 'Click to change',
+    // BACKUP_RESOTRE : 'How to back-up and store your phone\'s data',
+    // WIFI : 'How to connect your phone via Wi-Fi',
+    // APP : 'How to install local apps',
+    // CONTACT : 'How to manage your contacts with SnapPea',
+    // RINGTONE : 'Why there\'s no sound when you test a ringtone',
+    // SETUP_RINGTONE : 'How to quickly set a ringtone',
+    // IDENTIFY_CONTACT : 'Why can\'t I dinstguish between contacts, SMS, or apps on my device',
+    // ONLINE_GAME : 'What to do when there\'s a problem charing online game credit',
+    // TRAFFIC : 'Will \'SnapPea Android client\' consume my data?',
+    // EXPORT_CONTACT : 'How to import and export my contacts'
 });

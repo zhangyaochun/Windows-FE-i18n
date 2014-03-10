@@ -174,8 +174,8 @@ define({
     RETRY_PUSH_PHONE : 'Send again',
     CANCEL_PUSH_PHONE : 'Cancel send',
 
-    RETRY_INSTALL : 'Reinstall',
-    RETRY_PUSH_VIDEO : 'Retransfer',
+    RETRY_INSTALL : 'Retry',
+    RETRY_PUSH_VIDEO : 'Retry',
 
     DISK_NO_SPACE_TITLE : 'Insufficient hard drive space',
     DISK_NO_SPACE_CHANGE_FOLDER : 'Edit location',
