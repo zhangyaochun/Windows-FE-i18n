@@ -209,7 +209,7 @@ define({
     AGENT_NOTIFI : 'Connected, enjoy the SnapPea service!',
     SEND_TO_PHONE : 'Send to phone',
     DO_NOT_SEND_TO_PHONE : 'Don\'t send',
-    //LEARN_MORE : '了解更多',
+    // LEARN_MORE : 'Learn more',
 
     RETRY : 'Retry',
     OPEN_EXPORT_FOLDER : 'Open export folder',
@@ -225,7 +225,12 @@ define({
     BINDING_AUTOBACKUP_DES : '<span class="text-warning">Contacts, Messages, and Pictures</span> will auto-backup to your computer',
     BINDING_CONNECT : 'Auto-connect device',
     BINDING_CONNECT_DES : 'Launch SnapPea and your device will auto-connect',
-    BINDING_WARNING : 'If this isn\'t your computer, don\'t link!'
+    BINDING_WARNING : 'If this isn\'t your computer, don\'t link!',
 
-    //WANDOUJIA_THEME : '豌豆荚主题'
+    // BIND_CLOUD_HEADER : 'Link your phone to manage it more conveniently',
+    // BIND_CLOUD_TEXT_FIRST_LINE  : 'After linking, SnapPea will automatically back-up your phone\'s',
+    // BIND_CLOUD_TEXT_SECOND_LINE  : 'contacts, SMS, pictures, and apps so you can restore if needed.',
+    // BIND_CLOUD_WIFI : 'Connect phone automatically on Wi-Fi',
+
+    // WANDOUJIA_THEME : 'SnapPea Theme'
 });

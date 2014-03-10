@@ -51,7 +51,7 @@ define({
 
     NO_CONTACT_UNDER_THIS_ACCOUNT : 'Current account no contacts',
 
-    BATCH_SEND : 'Group',
+    BATCH_SEND : 'Mass',
     BATCH_SEND_TIP : '... And so on {1}.',
     NAMEPLATE_BATCH_SEND_TIP : '...and <span class="link list-switch">{1} others</span>',
     SEND_FAILED_TIP : '{1} failed to send',
@@ -76,8 +76,8 @@ define({
 
     ALERT_TIP_EXPORT_MMS : 'Export will not include MMS messages',
 
-    SEND : 'Send &crarr;',
-    NEW_SMS : 'New message',
+    SEND : 'Send',
+    NEW_SMS : 'Write',
     BATCH_CONVERSATION_TITLE : 'All messages from {1} selected',
     //SEND_WITH_SPEC_SIM : '使用 卡 {1} 发送',
     //SEND_WITH_SPEC_SIM_HAS_NAME : '使用{1}号发送',
@@ -118,12 +118,12 @@ define({
     DELET_TIP_4_4 : 'To delete text messages, set SnapPea as the "Default SMS App" in your phone\'s settings.',
     MARK_AS_READ_TIP_4_4 : 'To mark as read, set SnapPea as the "Default SMS App" in your phone\'s settings.',
 
-    OPEN_ON_DEIVE_4_4 : 'Please view it on your phone'
+    OPEN_ON_DEIVE_4_4 : 'View the MMS on your phone'
 
 
-    // SMART_DATE_TODAY : '今天 MM 月 dd 日',
-    // SMART_DATE_YESTERDAY : '昨天 MM 月 dd 日',
-    // SMART_DATE_TDBY : '前天 MM 月 dd 日',
-    // SMART_DATE_SOME_DAY : 'MM 月 dd 日',
-    // SMART_DATE_DIFF_YEAR : 'yyyy 年 MM 月 dd 日'
+    // SMART_DATE_TODAY : 'Today, MM/dd',
+    // SMART_DATE_YESTERDAY : 'Yesterday, MM/dd',
+    // SMART_DATE_TDBY : '2 days ago, MM/dd',
+    // SMART_DATE_SOME_DAY : 'MM/dd',
+    // SMART_DATE_DIFF_YEAR : 'yyyy/MM/dd'
 });

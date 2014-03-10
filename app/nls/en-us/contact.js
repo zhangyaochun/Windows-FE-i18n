@@ -175,6 +175,6 @@ define({
     EMPTY_LIBRARY_LIST : 'Oh? No pictures in your phone\'s gallery',
 
     NAV_CONTACT_ALL : 'All Contacts',
-    //CUSTOM : '自定义...'
+    // CUSTOM : 'Self-defined...'
 });
 

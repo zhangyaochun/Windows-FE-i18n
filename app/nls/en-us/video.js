@@ -32,7 +32,7 @@ define({
     ADD_VIDEO_LOADING : 'Importing video, please wait...',
     PLAY_VIDEO_SUCCESS : 'Video loaded',
     VIDEO_SUPPORT_TIP : 'Formats supported: .avi .3gp .mp4 and .m4v To manage other formats, use your <span class="link button-manage-sd">SD card</span>.',
-    GET_VIDEO_ERROR : 'Failed to load video',
+    GET_VIDEO_ERROR : 'Failed to load video'
 
-    //SMART_DATE_SOME_MONTH : 'yyyy 年 MM 月'
+    // SMART_DATE_SOME_MONTH : 'yyyy/MM'
 });
