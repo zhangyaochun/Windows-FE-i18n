@@ -230,7 +230,7 @@ define({
     WASH_NOTIFI_DO_WASH : '洗一下',
     WASH_RESULT_INFO_BEFORE_REPLACE : '替换前：',
     WASH_RESULT_INFO_AFTER_REPLACE : '替换后：',
-    WASH_CLOSE_NOTIFI_TITLE : '请在手机上关闭{{= it.title }}的通知栏消息',
+    WASH_CLOSE_NOTIFI_TITLE : '请在手机上关闭{1}的通知栏消息',
 
     /* Permission info */
     "android.permission-group.ACCOUNTS" : "访问您的账号",

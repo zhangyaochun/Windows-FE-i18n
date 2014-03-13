@@ -462,7 +462,7 @@ progress {
     }
 
     &::-webkit-progress-value {
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#7fc124), to(#60ac1e));
+        background-color: #15BC49;
         display: block;
         height: 32px;
         min-width: 10px;
@@ -470,8 +470,8 @@ progress {
 
     &.running {
         &::-webkit-progress-value {
-            background: url('../images/progress_bg_18X6.png');
-            background-color: $standardColor;
+            background: url('../images/progress_bg_18X6.png') repeat-x;
+            background-color: #15bc49;
             -webkit-animation: {
                 duration: .5s;
                 iteration-count: infinite;
@@ -481,53 +481,61 @@ progress {
         }
     }
 
+   &.lighter {
+        &::-webkit-progress-value {
+            background: url('../images/progress_bar_lighter.png') repeat-y;
+            background-color: #15bc49;
+            -webkit-animation: {
+                duration: 1.5s;
+                iteration-count: infinite;
+                name: runningProgressLighter;
+                timing-function: linear;
+            }
+        }
+    }
+
     &.min,
     &.tiny {
         background-image: none;
-        border: 1px #bbb solid;
-        padding: 1px;
+        border: 1px #d9d9d9 solid;
+        border-radius: 1px;
 
         &::-webkit-progress-bar {
             background-color: #fff;
             background-image: none;
-            border-radius: 6px;
+            border-radius: 1px;
             box-shadow: none;
+            height: 0px;
         }
 
         &::-webkit-progress-value {
-            border-radius: 6px;
+            border-radius: 1px;
+            padding: 0 1px;
+            margin: -1px -1px 0 -1px;
         }
     }
 
     &.min {
-        border-radius: 6px;
-        height: 14px;
-
-        &::-webkit-progress-bar {
-            height: 10px;
-        }
+        height: 10px;
 
         &::-webkit-progress-value {
+            box-sizing : content-box;
             height: 10px;
         }
     }
 
     &.tiny {
-        border-radius: 6px;
-        height: 10px;
-
-        &::-webkit-progress-bar {
-            height: 6px;
-        }
+        height: 6px;
 
         &::-webkit-progress-value {
+            box-sizing : content-box;
             height: 6px;
         }
     }
 
     &.disabled {
         &::-webkit-progress-value {
-            background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f1f1f1), color-stop(0.05,#f9f9f9), color-stop(1, #ccc));
+            background-color: #cfcfcf;
         }
     }
 }
@@ -537,10 +545,22 @@ progress {
         background-position-x: 0;
     }
     50% {
-        background-position-x: 9px;
+        background-position-x: 10px;
     }
     100% {
-        background-position-x: 18px;
+        background-position-x: 20px;
+    }
+}
+
+@-webkit-keyframes runningProgressLighter {
+    0% {
+        background-position-x: -150px;
+    }
+    50% {
+        background-position-x: 50%;
+    }
+    100% {
+        background-position-x: calc(100% + 150px);
     }
 }
 
