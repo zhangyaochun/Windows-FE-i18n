@@ -154,7 +154,7 @@ define({
     SHARE_CONTENT_TYPE_PHOTO : 'Photo',
     SHARE_CONTENT_TYPE_WELCOME : 'SnapPea',
     SHARE_CONTENT_TYPE_APP : 'App',
-    FACEBOOK_MESSAGE_FROM : ' From my {1}.',
+    FACEBOOK_MESSAGE_FROM : ' From my {1} using SnapPea.',
 
     SHARE_BINDED : 'Already linked',
     SHARE_TO_SINA : 'Linked to Sina Weibo',
