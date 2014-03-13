@@ -33,7 +33,7 @@ define({
     // QUERYING : '正在准备沐浴液...',
     // QUERYING_TIP : '查找可替换应用',
     // PIRATE_TIP : '山寨应用可替换为官方版',
-    //ADS_NO_SOLUTION_TIP : '广告应用暂无替换方案',
+    // ADS_NO_SOLUTION_TIP : '广告应用暂无替换方案',
     // ADS_TIP : '广告应用可替换为无广告版',
     // PIRATE : '山寨',
     // ADS : '广告',
