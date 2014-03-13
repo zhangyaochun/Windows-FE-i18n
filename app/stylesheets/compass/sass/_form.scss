@@ -471,7 +471,7 @@ progress {
     &.running {
         &::-webkit-progress-value {
             background: url('../images/progress_bg_18X6.png') repeat-x;
-            background-color: #15BC49;
+            background-color: #15bc49;
             -webkit-animation: {
                 duration: .5s;
                 iteration-count: infinite;
@@ -484,7 +484,7 @@ progress {
    &.lighter {
         &::-webkit-progress-value {
             background: url('../images/progress_bar_lighter.png') repeat-y;
-            background-color: #15BC49;
+            background-color: #15bc49;
             -webkit-animation: {
                 duration: 1.5s;
                 iteration-count: infinite;
@@ -497,7 +497,7 @@ progress {
     &.min,
     &.tiny {
         background-image: none;
-        border: 1px #D9D9D9 solid;
+        border: 1px #d9d9d9 solid;
         border-radius: 1px;
 
         &::-webkit-progress-bar {
@@ -510,6 +510,8 @@ progress {
 
         &::-webkit-progress-value {
             border-radius: 1px;
+            padding: 0 1px;
+            margin: -1px -1px 0 -1px;
         }
     }
 
@@ -519,10 +521,6 @@ progress {
         &::-webkit-progress-value {
             box-sizing : content-box;
             height: 10px;
-            padding: 0 1px 0 1px; 
-            margin-top: -1px;
-            margin-left: -1px;
-            margin-right: -1px;
         }
     }
 
@@ -532,16 +530,12 @@ progress {
         &::-webkit-progress-value {
             box-sizing : content-box;
             height: 6px;
-            padding: 0 1px 0 1px; 
-            margin-top: -1px;
-            margin-left: -1px;
-            margin-right: -1px;
         }
     }
 
     &.disabled {
         &::-webkit-progress-value {
-            background-color: #CFCFCF;
+            background-color: #cfcfcf;
         }
     }
 }
