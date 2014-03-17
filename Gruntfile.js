@@ -133,15 +133,16 @@ module.exports = function (grunt) {
         fs.mkdirSync(i18nNlsPath + '/' + nls);
 
         var content;
-        var template = util.format('define({"%s" : true});', nls);
         fs.readdirSync(pathConfig.app + '/nls/' + nls).forEach(function (file) {
             if (file.substr(0, 1) === '.') {
                 return;
             } else {
-                grunt.file.write(i18nNlsPath + '/' + file, template);
+                var nlsJson = grunt.file.read(pathConfig.app + '/nls/' + nls + '/' + file);
+                var nlsContent = 'define({"'+ nls  +'" : ' + nlsJson + '});';
+                var fileName = file.replace('json', 'js');
+                grunt.file.write(i18nNlsPath + '/' + fileName, nlsContent);
             }
         });
-        copyFolderRecursive(pathConfig.app + '/nls/' + nls, i18nNlsPath + '/' + nls);
 
         var fd;
         if (nls !== 'zh-cn') {
