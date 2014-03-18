@@ -188,8 +188,8 @@
     "BINDING_DEVICE" : "绑定手机",
     "BINDING_WARNING" : "如果您使用的不是自己的电脑和手机，请不要绑定！",
     "BIND_CLOUD_HEADER" : "绑定自己的手机，让管理更便捷。",
-    "BIND_CLOUD_TEXT_FIRST_LINE " : "绑定后豌豆荚会帮助您自动备份手机的",
-    "BIND_CLOUD_TEXT_SECOND_LINE " : "联系人、短信、照片、应用，方便您随时恢复。",
+    "BIND_CLOUD_TEXT_FIRST_LINE" : "绑定后豌豆荚会帮助您自动备份手机的",
+    "BIND_CLOUD_TEXT_SECOND_LINE" : "联系人、短信、照片、应用，方便您随时恢复。",
     "BIND_CLOUD_WIFI" : "Wi - Fi 下自动连接手机。无需手动操作。",
     "WANDOUJIA_THEME" : "豌豆荚主题"
 }
