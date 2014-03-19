@@ -57,10 +57,13 @@
     min-width: 305px;
     overflow: visible;
     position: relative;
-    -webkit: {
-        animation: fade-in-device 1.5s;
-        transition: width 1s;
-        transform: translate3d(0, 0, 0);
+
+    &.fade-in {
+        -webkit: {
+            animation: fade-in-device 1.5s;
+            transition: width 1s;
+            transform: translate3d(0, 0, 0);
+        }
     }
 
     .stage-ctn {
@@ -844,8 +847,11 @@
     // text-shadow: rgba(0, 0, 0, .3) 0 5px 8px, rgba(0, 0, 0, 0.3) 0 1px 2px;
     text-shadow: rgba(0, 0, 0, .8) 0 3px 8px,rgba(0, 0, 0, .4) 0 1px 2px;
     margin-bottom: 110px;
-    -webkit-animation: fade-in-time 1.5s;
     -webkit-transform: translate3d(0, 0, 0);
+
+    &.fade-in {
+        -webkit-animation: fade-in-time 1.5s;
+    }
 
     .w-welcome-account {
         position: absolute;
