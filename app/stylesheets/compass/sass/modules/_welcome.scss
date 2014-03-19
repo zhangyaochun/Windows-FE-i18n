@@ -871,6 +871,10 @@
             }
         }
 
+        .button-user {
+            width: 255px;
+        }
+
         &.logged-in {
             pointer-events: none;
         }
