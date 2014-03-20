@@ -82,6 +82,10 @@ html, body, .w-main {
     }
 }
 
+.w-module-hide {
+    display: none;
+}
+
 .w-layout-hide {
     opacity: 0;
     pointer-events: none;
