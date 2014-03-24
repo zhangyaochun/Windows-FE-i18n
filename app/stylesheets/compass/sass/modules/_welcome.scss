@@ -663,6 +663,23 @@
         }
     }
 
+    &.p2p {
+
+        -webkit-box-align: center;
+
+        .icon-ctn {
+            @include sprite-sprite(local-p2p);
+        }
+
+        .desc {
+            margin: 5px 0 10px;
+        }
+
+        .info {
+            margin: 10px 0;
+        }
+    }
+
     &.changelog {
         -webkit-box-align: center;
 
