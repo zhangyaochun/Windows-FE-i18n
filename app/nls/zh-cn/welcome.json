@@ -120,5 +120,9 @@
     "IDENTIFY_CONTACT" : "为什么不能识别设备上的联系人、短信或应用",
     "ONLINE_GAME" : "网游充值遇到问题怎么办",
     "TRAFFIC" : "「豌豆荚 Android 版」会消耗手机流量吗",
-    "EXPORT_CONTACT" : "如何导入或导出我的联系人"
+    "EXPORT_CONTACT" : "如何导入或导出我的联系人",
+    "P2PTITLE" : "已为您开启下载加速功能",
+    "P2PDESCRIPTION" : "分享是一种美德。有了 P2P 加速功能，帮助身边的朋友们下载加速，更能让您自己的下载速度提升",
+    "GOTIT" : "知道了",
+    "SETTING" : "设置"
 }
