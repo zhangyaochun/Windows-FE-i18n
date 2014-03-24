@@ -387,12 +387,12 @@
     overflow: hidden;
     padding: 0 10px;
     position: relative;
-    top : 36px;
     -webkit-box-align: center;
     -webkit-transition: top .4s linear;
+    -webkit-transform: translate3d(0, 36px, 0);
 
     &.show {
-       top : 0;
+       top : -36px;
     }
 
     .icomoon {
