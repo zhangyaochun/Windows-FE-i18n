@@ -3,7 +3,7 @@
  *
  * @author wangye.zhao@wandoujia.com
  ********************************************************************************/
-@import "en-US/*.png";
+@import "en-us/*.png";
 
 body {
     &,
@@ -91,7 +91,7 @@ body {
     @each $card in web, photos, facebook, itunes, youtube, feedback {
         &.snappea-#{$card} {
             .icon-ctn {
-                @include en-US-sprite(snappea-#{$card});
+                @include en-us-sprite(snappea-#{$card});
             }
         }
     }
@@ -139,19 +139,19 @@ body {
 
 .w-app-mount-sd-tip {
     .mount-sd {
-        @include en-US-sprite(unmount-sd);
+        @include en-us-sprite(unmount-sd);
     }
 }
 
 .w-contact-sim-tip {
     .sim-tip {
-        @include en-US-sprite(sim-tip);
+        @include en-us-sprite(sim-tip);
     }
 }
 
 .w-misc-sd-mount-ctn {
     .mount-sd-tip {
-        @include en-US-sprite(unmount-sd);
+        @include en-us-sprite(unmount-sd);
     }
 }
 
