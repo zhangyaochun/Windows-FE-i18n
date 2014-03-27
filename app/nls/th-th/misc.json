@@ -15,7 +15,7 @@
   "USB_INSTALL_ALLOW":"เมื่อคุณเชื่อมต่อโทรศัพท์ กรุณาอนุญาตการติดตั้ง SnapPea บนโทรศัพท์ของคุณ",
   "PHTONE_DISCONNECTED":"โทรศัพท์ขาดการเชื่อมต่อ",
   "POSIBLE_REASON":"เหตุผลที่เป็นไปได้:",
-  "MTP_BLOCK_BY_SCREEN_LOCK":"หน้าจอโทรศัพท์อาจจะถูกล็อก ต้องปลดล็อกโทรศัพท์ก่อนเพื่อจัดระเบียบการ์ด SD กรุณาปลดล็อกหน้าจอโทรศัพท์ หรือใช้โหมด FTP <span class=\"link button-ftp\">เพื่อจัดการการ์ด SD ของคุณ<\/span>",
+  "MTP_BLOCK_BY_SCREEN_LOCK":"หน้าจอโทรศัพท์อาจจะถูกล็อก ต้องปลดล็อกโทรศัพท์ก่อนเพื่อจัดระเบียบการ์ด SD กรุณาปลดล็อกหน้าจอโทรศัพท์ หรือใช้โหมด FTP <span class=\"link button-ftp\">เพื่อจัดการการ์ด SD ของคุณ</span>",
   "SELECT":"เลือก",
   "CAESURA_SIGN":", ",
   "DESELECT":"ไม่เลือก",
@@ -40,7 +40,7 @@
   "CONFIRM_EXTENTION":"แน่ใจว่าคุณต้องการ Restore การตั้งค่าของ Extension ดั้งเดิม?",
   "MANGEMENT":"การจัดการ",
   "ADD_TO_COLLECT":"เพิ่ม Extension",
-  "BATCH_UNSTAR_PLUGINS":"<p>เอา {1} Extension ที่เลือกไว้ออก? <\/p>",
+  "BATCH_UNSTAR_PLUGINS":"<p>เอา {1} Extension ที่เลือกไว้ออก? </p>",
   "PUBLISH":"เผยแพร่",
   "LOGIN_TO_MANAGE":"ลงทะเบียนเพื่อเพิ่ม Extension",
   "LOGIN_TO_STAR":"ลงทะเบียนเพื่อเพิ่ม Extension",
@@ -188,8 +188,9 @@
   "BINDING_TITLE":"เชื่อมโยงอุปกรณ์นี้?",
   "BINDING_DES":"การเชื่อมโยงอุปกรณ์ทําให้คุณสามารถ:",
   "BINDING_AUTOBACKUP":"ข้อมูลสำรองอัตโนมัติ",
-  "BINDING_AUTOBACKUP_DES":"<span class=\"text-warning\">รายชื่อผู้ติดต่อ ข้อความ และรูปภาพ<\/span>จะถูกสำรองข้อมูลโดยอัตโนมัติไปยังคอมพิวเตอร์ของคุณ",
+  "BINDING_AUTOBACKUP_DES":"<span class=\"text-warning\">รายชื่อผู้ติดต่อ ข้อความ และรูปภาพ</span>จะถูกสำรองข้อมูลโดยอัตโนมัติไปยังคอมพิวเตอร์ของคุณ",
   "BINDING_CONNECT":"เชื่อมต่ออุปกรณ์โดยอัตโนมัติ",
   "BINDING_CONNECT_DES":"เปิดใช้งาน SnapPea แล้วอุปกรณ์ของคุณจะเชื่อมต่อโดยอัตโนมัติ",
-  "BINDING_WARNING":"ถ้านี้ไม่ใช่คอมพิวเตอร์ของคุณ ระวังอย่าทําการเชื่อมโยง!"
+  "BINDING_WARNING":"ถ้านี้ไม่ใช่คอมพิวเตอร์ของคุณ ระวังอย่าทําการเชื่อมโยง!",
+  "DATE_STR" : "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
 }
