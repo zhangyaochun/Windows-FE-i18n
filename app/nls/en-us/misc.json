@@ -191,5 +191,6 @@
     "BINDING_AUTOBACKUP_DES" : "<span class=\"text-warning\">Contacts, Messages, and Pictures</span> will auto-backup to your computer",
     "BINDING_CONNECT" : "Auto-connect device",
     "BINDING_CONNECT_DES" : "Launch SnapPea and your device will auto-connect",
-    "BINDING_WARNING" : "If this isn't your computer, don't link!"
+    "BINDING_WARNING" : "If this isn't your computer, don't link!",
+    "DATE_STR" : "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
 }

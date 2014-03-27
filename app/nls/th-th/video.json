@@ -30,6 +30,6 @@
   "PLAY_CANNOT_READ":"ไม่สามารถโหลดวิดีโอ",
   "ADD_VIDEO_LOADING":"กําลังนําวิดีโอเข้ามา กรุณารอสักครู่...",
   "PLAY_VIDEO_SUCCESS":"โหลดวิดีโอเรียบร้อยแล้ว",
-  "VIDEO_SUPPORT_TIP":"รูปแบบที่รองรับ: .avi .3gp .mp4 และ .m4v ถ้าต้องการจัดการรูปแบบอื่นๆ กรุณาใช้<span class=\"link button-manage-sd\">การ์ด SD ของคุณ<\/span>",
+  "VIDEO_SUPPORT_TIP":"รูปแบบที่รองรับ: .avi .3gp .mp4 และ .m4v ถ้าต้องการจัดการรูปแบบอื่นๆ กรุณาใช้<span class=\"link button-manage-sd\">การ์ด SD ของคุณ</span>",
   "GET_VIDEO_ERROR":"ไม่สามารถโหลดวิดีโอ"
 }
