@@ -76,7 +76,7 @@
   "SNAPPEA_WEB" : "SnapPea Web",
   "SNAPPEN_WEB_DES":"รูปภาพ ข้อความ ผู้ติดต่อ และแอปฯ จากเบราว์เซอร์ของคุณ",
   "SNAPPEA_WEB_ACTION":"ลองเดี๋ยวนี้เลย",
-  "SNAPPEA_FEEDBACK" : "How are we doing?",
+  "SNAPPEA_FEEDBACK" : "เป็นอย่างไรบ้าง?",
   "SNAPPEA_FEEDBACK":"เป็นอย่างไรบ้าง?",
   "SNAPPEA_FEEDBACK_DESC":"ใช้เวลา 3 นาที<br />เราอยากทราบข้อคิดเห็นของคุณ",
   "SNAPPEA_FEEDBACK_ACTION":"ไปที่นั่นเลย",
@@ -90,5 +90,5 @@
   "SNAPPEN_ITUNES_DES":"ดาวน์โหลดตัวอย่างภาพยนตร์ฟรี",
   "SNAPPEA_YOUTUBE":"YouTube",
   "SNAPPEN_YOUTUBE_DES":"ดาวน์โหลดจากคอมพิวเตอร์ ดูบนโทรศัพท์ของคุณ",
-  "READING_INFO_WARNING" : "Updating... Please try later."
+  "READING_INFO_WARNING" : "กำลังปรับปรุง... กรุณาลองใหม่ในภายหลัง"
 }
