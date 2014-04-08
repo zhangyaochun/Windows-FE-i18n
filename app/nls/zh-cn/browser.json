@@ -6,5 +6,8 @@
     "EXCEPTION" : "加载异常",
     "NO_CONNECTION" : "无法正常加载内容站，可能的原因是您的计算机未连接到互联网。",
     "RETRY" : "重试",
-    "APP_SEARCH" : "应用搜索"
+    "APP_SEARCH" : "应用搜索",
+    "YOUTUBE_INFO_NO" : "",
+    "YOUTUBE_INFO_YES" : "",
+    "YOUTUBE_DOWNLOAD" : ""
 }
