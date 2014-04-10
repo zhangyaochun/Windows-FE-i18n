@@ -66,6 +66,13 @@
         }
     }
 
+    .shadow {
+         left: 10px;
+         position: absolute;
+         top: 10px;
+         -webkit-transition: all .7s ease-out;
+     }
+
     .stage-ctn {
         position: relative;
 
