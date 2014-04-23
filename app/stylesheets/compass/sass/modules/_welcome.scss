@@ -171,38 +171,34 @@
     &.turn-right {
         -webkit-transition: width .5s;
 
-        .screen-wrap {
+        .screen-wrap,
+        .shadow {
             -webkit-transition-timing-function: ease-in;
+        }
+
+        .shadow {
+            left: 130px;
         }
     }
 
     &.turn-left {
-        .screen-wrap {
+        .screen-wrap,
+        .shadow {
             -webkit-transform: rotate(-90deg);
-
-            .screen-ctn {
-                -webkit-filter: drop-shadow(-20px 8px 30px rgba(0, 0, 0, 0.8));
-            }
         }
     }
 
     &.turn-right {
-        .screen-wrap {
+        .screen-wrap,
+        .shadow {
             -webkit-transform: rotate(90deg);
-
-            .screen-ctn {
-                -webkit-filter: drop-shadow(20px -8px 30px rgba(0, 0, 0, 0.8));
-            }
         }
     }
 
     &.turn-down {
-        .screen-wrap {
+        .screen-wrap,
+        .shadow {
             -webkit-transform: rotate(180deg);
-
-            .screen-ctn {
-                -webkit-filter: drop-shadow(-15px -15px 30px rgba(0, 0, 0, 0.8));
-            }
         }
     }
 }
