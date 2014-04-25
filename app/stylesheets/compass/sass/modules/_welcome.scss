@@ -299,21 +299,26 @@
 
 .w-welcome-feed-card {
     background: #fff;
-    box-shadow: $cardShadow;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
     box-sizing: border-box;
     height: 140px;
     padding: 15px 15px 10px;
     position: relative;
     width: 350px;
-    -webkit-transition: -webkit-transform .3s ease-out, box-shadow .2s linear;
+    opacity: 0;
+    -webkit-transition: opacity .5s ease-out, box-shadow .2s linear;
     -webkit-transform: translate3d(0, 0, 0);
+
+    &.transform {
+        -webkit-transition:  -webkit-transform .3s ease-out;
+    }
 
     &.flip {
         -webkit-transition: box-shadow .2s linear;
     }
 
     &:hover {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, .5), 0 3px 5px rgba(0, 0, 0, .1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
     }
 
     &.hide {
@@ -344,10 +349,23 @@
         }
     }
 
+    .link {
+        cursor: default;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     .title {
         color: #333;
         font-size: 15px;
         font-weight: bold;
+
+        &.link {
+            &:hover {
+                color: $linkColor;
+            }
+        }
     }
 
 
@@ -456,27 +474,22 @@
             height: 300px;
         }
 
-        .title {
-            color: #333;
-            display: inline-block;
-            font-size: 18px;
-        }
-
         .apps-list {
             .item{
-                border-bottom: 1px transparent solid;
+                border-bottom: 1px #f2f2f2 solid;
                 border-top: 1px transparent solid;
-                height: 55px;
+                height: 52px;
                 padding: 10px 0;
+
+                &.no-border {
+                    border: 0;
+                }
 
                 .icon {
                     height: 50px;
                     margin-right: 10px;
+                    margin-top: 2px;
                     width: 50px;
-                }
-
-                &.border-top {
-                    border-top: 1px #f2f2f2 solid;
                 }
 
                 .info-ctn {
@@ -484,18 +497,28 @@
                 }
 
                 .info {
+                    color: #333;
+                    font-size: 14px;
                     margin-bottom: 5px;
                 }
 
                 span {
                     font-size: 14px;
                 }
+
+                .button-update {
+                    margin-top: 15px;
+                }
             }
         }
 
         .action-ctn {
-            margin-top: -5px;
+            padding-top: 10gpx;
             width: 100%;
+
+            &.no-padding {
+                padding-top: 0;
+            }
 
             .action {
                 float: right;
@@ -517,8 +540,7 @@
     &.cloud-photo,
     &.weibo,
     &.tieba,
-    &.xibaibai,
-    &.diversion {
+    &.xibaibai {
 
         padding-bottom: 0;
 
@@ -647,26 +669,6 @@
                 img:nth-child(2){
                     margin-left: 8px;
                 }
-            }
-        }
-    }
-
-    &.diversion {
-        .title {
-            width: 100%;
-        }
-
-        .info-ctn {
-            padding-top: 5px;
-
-            img {
-                height: 60px;
-                width: 60px;
-            }
-
-            img:nth-child(n+2){
-
-                margin-left: 5px;
             }
         }
     }

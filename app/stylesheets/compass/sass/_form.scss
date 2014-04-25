@@ -128,6 +128,27 @@ button {
         }
     }
 
+    &.normal {
+        background-image: $normalBtnBgColor;
+        border: $normalBtnBorder;
+        border-radius: 0;
+        color: $normalBtnTextColor;
+        font-size: 14px;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+
+        &:enabled:hover:not(.active):not(:active),
+        &:enabled:focus {
+            background-image: $normalBtnHoverBgColor;
+            color: $normalBtnTextColor;
+        }
+
+        &:enabled:active,
+        &.active {
+            background-image: $normalBtnActiveBgColor;
+            color: $normalBtnTextColor;
+        }
+    }
+
 
     + button,
     + .w-ui-buttongroup {
