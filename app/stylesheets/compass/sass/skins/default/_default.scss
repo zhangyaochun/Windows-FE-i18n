@@ -45,6 +45,13 @@ $actionBtnActiveBgColor: -webkit-linear-gradient(#2f7c2f, #2f7c2f);
 $actionBtnBorder: none;
 $actionBtnTextShadow: none;
 
+$normalBtnBgColor : -webkit-linear-gradient(#f0f0f0, #f0f0f0);
+$normalBtnTextColor: #000;
+$normalBtnHoverBgColor: -webkit-linear-gradient(#f4f4f4, #f4f4f4);
+$normalBtnActiveBgColor: -webkit-linear-gradient(#e0e0e0, #e0e0e0);
+$normalBtnBorder: none;
+$normalBtnTextShadow: none;
+
 $listItemHoverColor: rgba(226, 250, 192, .5);
 
 $componentShadow: 0 2px 20px rgba(0, 0, 0, .5);
