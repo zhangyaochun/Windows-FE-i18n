@@ -165,6 +165,7 @@
     "SIZE" : "Size",
     "PLAY" : "Play",
     "STOP" : "Stop",
+    "READ" : "阅读",
     "CLOUD_BACKUP" : "Cloud backup",
     "CLOUD_BACKUP_OPEN" : "Turn on cloud backup",
     "ACCOUNT" : "Account",
@@ -192,5 +193,7 @@
     "BINDING_CONNECT" : "Auto-connect device",
     "BINDING_CONNECT_DES" : "Launch SnapPea and your device will auto-connect",
     "BINDING_WARNING" : "If this isn't your computer, don't link!",
-    "DATE_STR" : "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
+    "DATE_STR" : "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
+    "VIDEO" : "视频",
+    "EBOOK" : "电子书"
 }

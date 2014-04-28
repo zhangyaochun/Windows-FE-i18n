@@ -38,6 +38,20 @@ $warnningBtnTextColor: #fff;
 $warnningBtnHoverBgColor: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0, rgb(245, 29, 17)), color-stop(1, rgb(220, 0, 0)));
 $warnningBtnActiveBgColor: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0, rgb(177, 5, 0)), color-stop(1, rgb(203, 33, 27)));
 
+$actionBtnBgColor : -webkit-linear-gradient(#15bc49, #15bc49);
+$actionBtnTextColor: #fff;
+$actionBtnHoverBgColor: -webkit-linear-gradient(#62bb50, #62bb50);
+$actionBtnActiveBgColor: -webkit-linear-gradient(#2f7c2f, #2f7c2f);
+$actionBtnBorder: none;
+$actionBtnTextShadow: none;
+
+$normalBtnBgColor : -webkit-linear-gradient(#f0f0f0, #f0f0f0);
+$normalBtnTextColor: #000;
+$normalBtnHoverBgColor: -webkit-linear-gradient(#f4f4f4, #f4f4f4);
+$normalBtnActiveBgColor: -webkit-linear-gradient(#e0e0e0, #e0e0e0);
+$normalBtnBorder: none;
+$normalBtnTextShadow: none;
+
 $listItemHoverColor: rgba(226, 250, 192, .5);
 
 $componentShadow: 0 2px 20px rgba(0, 0, 0, .5);
