@@ -109,19 +109,29 @@ html, body, .w-main {
     .w-main-pim-mask-ctn {
 
         text-align: center;
-        width: 300px;
+        width: 500px;
 
         .icon {
             background: url('../images/connection-tips.png');
             height: 97px;
+            margin: 0 auto;
             width: 275px;
+        }
+
+        .title {
+            margin: 30px auto 0;
+        }
+
+        .title-wifi {
+            margin: 30px auto;
         }
 
         .desc {
             color: #4a4a4a;
             display: block;
-            font-size: 16px;
-            margin: 30px 0;
+            font-size: 14px;
+            line-height: 25px;
+            margin: 15px auto;
         }
     }
 
