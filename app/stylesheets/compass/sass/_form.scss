@@ -112,8 +112,10 @@ button {
         border: $actionBtnBorder;
         border-radius: 0;
         color: $actionBtnTextColor;
-        font-size: 14px;
-        text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-shadow: $actionBtnTextShadow;
+        box-shadow: $actionBtnBoxShadow;
 
         &:enabled:hover:not(.active):not(:active),
         &:enabled:focus {
@@ -133,8 +135,10 @@ button {
         border: $normalBtnBorder;
         border-radius: 0;
         color: $normalBtnTextColor;
-        font-size: 14px;
-        text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-shadow: $normalBtnTextShadow;
+        box-shadow: $normalBtnBoxShadow;
 
         &:enabled:hover:not(.active):not(:active),
         &:enabled:focus {
