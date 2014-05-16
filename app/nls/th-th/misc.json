@@ -203,17 +203,16 @@
   "USB_ERROR_TIP_2" : "USB 插口松了？换一个 USB 口插试试吧~",
   "USB_ERROR_TIP_3" : "重启手机有时候也能有奇效哦~",
   "FEEDBACK" : "还是连不上？<a class=\"feedback\" href=\"http://www.wandoujia.com/help/?do=add_ticke\" target='_blank'>向豌豆工程师求助</a>",
-
   "USB_TITLE_OPEN_SD" : "请用 USB 线连接手机后再管理 SD 卡",
   "USB_TITLE_WALLPAPER" : "请用 USB 线连接手机后再设置壁纸",
   "USB_TITLE_APP" : "请用 USB 线连接手机后再管理应用",
+  "USB_TITLE_CONTACT" : "请用 USB 线连接手机后再管理通讯录",
   "USB_TITLE_MESSAGE" : "请用 USB 线连接手机后再管理短信",
   "USB_TITLE_MUSIC" : "请用 USB 线连接手机后再管理音乐",
   "USB_TITLE_PHOTO" : "请用 USB 线连接手机后再管理照片",
   "USB_TITLE_VIDEO" : "请用 USB 线连接手机后再视频",
   "USB_TITLE_BACKUP-RESTORE" : "请用 USB 线连接手机后再使用备份恢复功能",
   "USB_TITLE_APP-WASH" : "请用 USB 线连接手机后再使用洗白白功能",
-
   "USE_USB_TITLE" : "使用 USB 线连接电脑",
   "USB_TIP_1" : "使用 USB 线连接电脑后，豌豆荚自动连接您的手机.",
   "USB_TIP_2" : "连接成功后，您就可以随心所欲的管理自己的手机了",
