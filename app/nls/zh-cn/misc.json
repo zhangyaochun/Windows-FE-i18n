@@ -209,6 +209,7 @@
     "USB_TITLE_OPEN_SD" : "请用 USB 线连接手机后再管理 SD 卡",
     "USB_TITLE_WALLPAPER" : "请用 USB 线连接手机后再设置壁纸",
     "USB_TITLE_APP" : "请用 USB 线连接手机后再管理应用",
+    "USB_TITLE_CONTACT" : "请用 USB 线连接手机后再管理通讯录",
     "USB_TITLE_MESSAGE" : "请用 USB 线连接手机后再管理短信",
     "USB_TITLE_MUSIC" : "请用 USB 线连接手机后再管理音乐",
     "USB_TITLE_PHOTO" : "请用 USB 线连接手机后再管理照片",
