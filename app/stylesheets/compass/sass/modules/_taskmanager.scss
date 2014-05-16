@@ -331,7 +331,7 @@
 .w-task-popup-tip {
     margin: 5px 0;
     position: relative;
-    width: 240px;
+    width: 175px;
 
     h2 {
         color: #000;
@@ -348,8 +348,8 @@
     .button-close {
         @include button-close;
         position: absolute;
-        right: 0;
-        top: 0;
+        right: -10px;
+        top: -8px;
     }
 }
 
