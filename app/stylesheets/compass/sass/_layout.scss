@@ -98,3 +98,46 @@ html, body, .w-main {
 .w-layout-hidden {
     visibility: hidden;
 }
+
+
+.w-main-pim-mask {
+    background-color: #f6f6f6;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -webkit-transition: opacity 0.5s;
+
+    .w-main-pim-mask-ctn {
+
+        text-align: center;
+        width: 500px;
+
+        .icon {
+            background: url('../images/connection-tips.png');
+            height: 97px;
+            margin: 0 auto;
+            width: 275px;
+        }
+
+        .title {
+            margin: 30px auto 0;
+        }
+
+        .title-wifi {
+            margin: 30px auto;
+        }
+
+        .desc {
+            color: #4a4a4a;
+            display: block;
+            font-size: 14px;
+            line-height: 25px;
+            margin: 15px auto;
+        }
+    }
+
+    &.hide {
+        opacity: 0;
+    }
+}
+
+

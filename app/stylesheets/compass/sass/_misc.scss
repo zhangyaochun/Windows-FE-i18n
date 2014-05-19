@@ -259,3 +259,111 @@
         width: 445px;
     }
 }
+
+.w-misc-usb-tips {
+    height: 410px;
+    width : 560px;
+
+    .top {
+        @include misc-sprite(usb-tip);
+        height: 120px;
+        padding: 10px;
+        -webkit-app-region: drag;
+
+        .logo {
+            @include misc-sprite(logo);
+            float: left;
+            height: 18px;
+            width: 60px;
+        }
+
+        .button-close {
+            @include misc-sprite(white-close);
+            cursor: pointer;
+            float: right;
+            height: 16px;
+            width: 16px;
+        }
+
+        .icon {
+            @include misc-sprite(connecting);
+            height: 96px;
+            left: 143px;
+            margin: 10px auto;
+            position: absolute;
+            width: 275px;
+        }
+
+        .connecting {
+            height: 12px;
+            left: 190px;
+            position: absolute;
+            top: 80px;
+            width: 98px;
+        }
+    }
+
+    .container {
+        background-color: #fafafa;
+        height: 230px;
+        text-align: center;
+        -webkit-app-region: drag;
+
+        .title {
+            font-color: #4a4a4a;
+            font-size: 16px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .tips {
+            margin: 0 auto 30px;
+            width: 370px;
+
+            .tip {
+                padding: 5px;
+
+                .num {
+                    background-color: #39ad37;
+                    border-radius: 2px;
+                    color: white;
+                    display: inline-block;
+                    height:20px;
+                    line-height: 20px;
+                    margin-right: 20px;
+                    text-align: center;
+                    width: 20px;
+                }
+
+                .content {
+                    color: #4a4a4a;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+
+    .feedback {
+        background-color: #f4f4f4;
+        height:28px;
+        padding-left: 12px;
+        padding-top: 12px;
+        -webkit-app-region: drag;
+    }
+
+    &.error {
+        .top {
+            @include misc-sprite(usb-error-tip);
+
+            .icon {
+                @include misc-sprite(disconnected);
+            }
+        }
+
+        .container {
+            .tips {
+                text-align: left;
+            }
+        }
+    }
+}
