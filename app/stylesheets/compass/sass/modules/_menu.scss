@@ -34,6 +34,11 @@
         font-size: 12px;
         height: 27px;
         text-shadow: 0 1px 0 #000;
+
+        @if $PROJECT_FLAG == PROJECT_LEYU {
+            text-shadow: none;
+        }
+
         -webkit-box-align: center;
 
         .label {
