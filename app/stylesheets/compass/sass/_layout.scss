@@ -56,6 +56,12 @@ html, body, .w-main {
     .sidebar {
         background-color: #43484d;
         border-left: 1px solid #717375;
+
+        @if $PROJECT_FLAG == PROJECT_LEYU {
+            background-color: #f4f4f4;
+            border-left: 1px solid #f4f4f4;
+        }
+
         height: 100%;
         position: absolute;
         width: 189px;

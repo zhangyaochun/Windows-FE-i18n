@@ -178,6 +178,9 @@ module.exports = function (grunt) {
         case 'SUNING':
             content = '$PROJECT_FLAG : PROJECT_SUNING';
             break;
+        case 'LEYU':
+            content = '$PROJECT_FLAG : PROJECT_LEYU';
+            break;
         case 'TIANYIN':
             content = '$PROJECT_FLAG : PROJECT_TIANYIN';
             break;

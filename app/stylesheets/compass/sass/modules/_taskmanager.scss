@@ -71,6 +71,12 @@
  ********************************************************************************/
 .w-task-manager-ctn {
     background-image: -webkit-gradient(linear, left top, left bottom, from(#5f6367), to(#53575b));
+    
+    @if $PROJECT_FLAG == PROJECT_LEYU {
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#e8e9eb), to(#e8e9eb));
+        border-top: 1px solid #ceced1;
+    }
+
     cursor: pointer;
     height: 36px;
     overflow: hidden;
