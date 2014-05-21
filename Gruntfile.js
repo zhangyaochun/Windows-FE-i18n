@@ -101,7 +101,47 @@ module.exports = function (grunt) {
             grunt.file.copy(path, dist);
             isDelete && fs.unlinkSync(path);
         }
-    }
+    };
+
+    var moveImages = function(nls, base, src, dist) {
+
+        if (!fs.existsSync(src)) {
+            return;
+        }
+
+        if (fs.statSync(src).isDirectory()) {
+            fs.readdirSync(src).forEach(function (file) {
+
+                if (nls == base) {
+
+                    var curPath = src + '/' +  file;
+                    var distPath = dist + '/' + file;
+                    if(fs.statSync(curPath).isDirectory()) {
+                        moveImages(nls, base, curPath, distPath);
+                    } else {
+                        grunt.file.copy(curPath, distPath);
+                        fs.unlinkSync(curPath);
+                    }
+
+                } else {
+
+                    if (file.indexOf(nls) > -1) {
+                        var curPath = src + '/' +  file;
+                        var distPath = dist + '/' + file;
+                        grunt.file.copy(curPath, distPath);
+                        fs.unlinkSync(curPath);
+                    }
+
+                }
+            });
+
+            grunt.file.delete(src);
+        } else {
+            grunt.file.copy(src, dist);
+            fs.unlinkSync(src);
+        }
+
+    };
 
 
     var deleteFolderRecursive = function(path) {
@@ -116,6 +156,18 @@ module.exports = function (grunt) {
             });
             fs.rmdirSync(path);
         }
+    };
+
+    var removeItem = function(source, item){
+        var len = source.length;
+
+        while(len --) {
+            if (len in source && source[len] === item) {
+                source.splice(len, 1);
+            }
+        }
+
+        return source;
     };
 
     grunt.registerTask('processI18n', function (nls) {
@@ -186,8 +238,8 @@ module.exports = function (grunt) {
         grunt.file.write(filePath, content);
     });
 
-    grunt.registerTask('mvImageMin', function (nls) {
-        copyFolderRecursive(pathConfig.dist + '/images/', pathConfig.dist + '/i18n/' + nls + '/images/', true);
+    grunt.registerTask('mvImageMin', function (nls, base) {
+        moveImages(nls, base, pathConfig.dist + '/images/', pathConfig.dist + '/i18n/' + nls + '/images/');
     });
 
     grunt.registerTask('clean', function (nls) {
@@ -205,8 +257,33 @@ module.exports = function (grunt) {
         project = project ? project.toUpperCase() : 'WDJ';
         var nlss = nls ? nls.toLowerCase().split(',') : ['zh-cn'];
 
+        var base = 'en-us';
+
+        //check base for i18n
+        if (arguments.length === 3 && typeof arguments[2] === 'string') {
+            
+            if (arguments[2] === '' && nlss.length === 1) {
+                base = arguments[1];
+            } else {
+                base = arguments[2];
+            }
+
+            //del first
+            if (nls.indexOf(arguments[2]) > -1) { 
+                nlss = removeItem(nlss, base);
+            }
+            
+            nlss.push(arguments[2]);
+        } else if (arguments.length === 2 && nlss.length === 1) {
+            //single build
+            base = nls;
+        }
+
+
+
         console.log('project : ', project);
         console.log('nls : ', nls);
+        console.log(nlss);
 
         nlss.forEach(function (nls) {
             var taskList = [
@@ -220,7 +297,7 @@ module.exports = function (grunt) {
                 'copyImage:' + nls,
                 'imagemin',
                 'copy:dist',
-                'mvImageMin:' + nls
+                'mvImageMin:' + nls + ':' + base
             ];
 
             grunt.task.run(taskList);
