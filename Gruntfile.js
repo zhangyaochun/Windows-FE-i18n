@@ -233,9 +233,6 @@ module.exports = function (grunt) {
         case 'TIANYIN':
             content = '$PROJECT_FLAG : PROJECT_TIANYIN';
             break;
-        case 'LEYU':
-            content = '$PROJECT_FLAG : PROJECT_LEYU';
-            break;
         }
 
         grunt.file.write(filePath, content);
