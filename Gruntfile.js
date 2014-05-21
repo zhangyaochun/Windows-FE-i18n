@@ -261,7 +261,13 @@ module.exports = function (grunt) {
 
         //check base for i18n
         if (arguments.length === 3 && typeof arguments[2] === 'string') {
-            base = arguments[2];
+            
+            if (arguments[2] === '' && nlss.length === 1) {
+                base = arguments[1];
+            } else {
+                base = arguments[2];
+            }
+
             //del first
             if (nls.indexOf(arguments[2]) > -1) { 
                 nlss = removeItem(nlss, base);
