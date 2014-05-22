@@ -54,6 +54,10 @@
             }
         }
 
+        .title {
+            width: 124px;
+        }
+
         &.gallery {
             .icon {
                 @include nav-sprite(nav-gallery);
