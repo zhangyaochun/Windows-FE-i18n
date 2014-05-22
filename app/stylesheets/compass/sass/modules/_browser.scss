@@ -48,6 +48,11 @@
 
             .value {
                 background-image: -webkit-gradient(linear, left top, left bottom, from(#7fc124), to(#60ac1e));
+                
+                @if $PROJECT_FLAG == PROJECT_LEYU {
+                    background-image: -webkit-gradient(linear, left top, left bottom, from(#f39700), to(#f39700));
+                }
+
                 display: block;
                 height: 2px;
                 left: 0;
@@ -59,6 +64,11 @@
                 .shinning {
                     background-color: transparent;
                     box-shadow: 0 0 5px rgb(120, 182, 0);
+
+                    @if $PROJECT_FLAG == PROJECT_LEYU {
+                        box-shadow: 0 0 5px #f39700;
+                    }
+
                     display: block;
                     height: 2px;
                     position: absolute;
@@ -160,11 +170,19 @@
 
         &:hover {
             color: $linkColor;
+            @if $PROJECT_FLAG == PROJECT_LEYU {
+                color: #f39700;
+            }
             text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
         }
 
         &.selected {
             color: $linkColor;
+
+            @if $PROJECT_FLAG == PROJECT_LEYU {
+                color: #f39700;
+            }
+
             font-weight: bold;
             text-shadow: 0 1px 0 #fff;
         }
@@ -173,6 +191,11 @@
 
 .w-browser-menu-pointer {
     background-color: #3baa24;
+
+    @if $PROJECT_FLAG == PROJECT_LEYU {
+        color: #f39700;
+    }
+
     bottom: -1px;
     display: none;
     height: 4px;
