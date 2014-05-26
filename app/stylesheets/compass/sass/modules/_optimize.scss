@@ -4,7 +4,7 @@
  * @author wangye.zhao@wandoujia.com
  ********************************************************************************/
 @import "../skins/default/default";
-@import "tx/*.png";
+@import "zh-cn/*.png";
 /********************************************************************************
  * Optimize Module
  ********************************************************************************/
@@ -38,23 +38,23 @@
         }
 
         .pre-scan {
-            @include tx-sprite(pre-scan);
+            @include zh-cn-sprite(pre-scan);
         }
 
         .warn {
-            @include tx-sprite(warn);
+            @include zh-cn-sprite(warn);
         }
 
         .scanning {
             background: {
-                image: url(../images/tx/scanning.gif);
+                image: url(../images/scanning.gif);
                 repeat: no-repeat;
                 position: center center;
             }
         }
 
         .finish {
-            @include tx-sprite(finish);
+            @include zh-cn-sprite(finish);
         }
 
         .title-ctn {
@@ -115,7 +115,7 @@
                 -webkit-box-pack: center;
 
                 .button-scan {
-                    @include tx-sprite(scan);
+                    @include zh-cn-sprite(scan);
                     border: none;
                     box-shadow: none;
                     display: block;
@@ -135,7 +135,7 @@
             -webkit-box-pack: end;
 
             .logo {
-                @include tx-sprite(logo);
+                @include zh-cn-sprite(logo);
                 height: 45px;
                 margin-left: 5px;
                 width: 45px;
@@ -148,7 +148,7 @@
         -webkit-box-flex: 1;
 
         .button-optimize-all {
-            @include tx-sprite(optimize);
+            @include zh-cn-sprite(optimize);
             border: none;
             box-shadow: none;
             display: block;
@@ -156,7 +156,7 @@
             width: 97px;
 
             &:enabled:hover {
-                @include tx-sprite(optimize);
+                @include zh-cn-sprite(optimize);
                 background-color: transparent;
                 border: none;
             }
@@ -206,15 +206,15 @@
         width: 15px;
 
         &.icon-info {
-            @include tx-sprite(icon-info);
+            @include zh-cn-sprite(icon-info);
         }
 
         &.icon-warn {
-            @include tx-sprite(icon-warn);
+            @include zh-cn-sprite(icon-warn);
         }
 
         &.icon-done {
-            @include tx-sprite(icon-done);
+            @include zh-cn-sprite(icon-done);
         }
     }
 }

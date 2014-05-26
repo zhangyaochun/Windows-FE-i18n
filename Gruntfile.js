@@ -1,7 +1,7 @@
 'use strict';
 
 var fs = require('fs');
-var util = require('util');
+var rimraf = require('rimraf');
 
 module.exports = function (grunt) {
     // load all grunt tasks
@@ -103,7 +103,7 @@ module.exports = function (grunt) {
         }
     };
 
-    var moveImages = function(nls, base, src, dist) {
+    var mvSelfImages = function(nls, src, dist) {
 
         if (!fs.existsSync(src)) {
             return;
@@ -112,67 +112,77 @@ module.exports = function (grunt) {
         if (fs.statSync(src).isDirectory()) {
             fs.readdirSync(src).forEach(function (file) {
 
-                if (nls == base) {
+                //just copy nls 
+                if (file.indexOf(nls) > -1) {
+                    
+                    /* 
+                     * @ fix link images/zh-cn
+                     * @TODO now we just support like images/zh-cn/a.gif images/zh-cn/b.gif
+                     * instead of images/zh-cn/module/a.gif or images/zh-cn/module/submodule/a.gif
+                     */
+                    if (fs.statSync(src + file).isDirectory()) {
 
-                    var curPath = src + '/' +  file;
-                    var distPath = dist + '/' + file;
-                    if(fs.statSync(curPath).isDirectory()) {
-                        moveImages(nls, base, curPath, distPath);
+                        fs.readdirSync(src + file).forEach(function (subfile) {
+                            var curPath = src + file + '/' + subfile;
+                            var distPath = dist + '/' + subfile;
+
+                            grunt.file.copy(curPath, distPath);
+                        });
+
+
                     } else {
-                        grunt.file.copy(curPath, distPath);
-                        fs.unlinkSync(curPath);
-                    }
 
-                } else {
-
-                    if (file.indexOf(nls) > -1) {
-                        var curPath = src + '/' +  file;
-                        var distPath = dist + '/' + file;
+                        //fix link zh-cn-s3fcacda7f4.png from stylesheets/compass/images/zh-cn
+                        var curPath = src  +  file;
+                        var distPath = dist + file;
                         grunt.file.copy(curPath, distPath);
-                        fs.unlinkSync(curPath);
+
                     }
 
                 }
+
             });
 
-            grunt.file.delete(src);
-        } else {
-            grunt.file.copy(src, dist);
-            fs.unlinkSync(src);
         }
 
     };
 
 
-    var deleteFolderRecursive = function(path) {
-        if (fs.existsSync(path)) {
-            fs.readdirSync(path).forEach(function(file,index){
-                var curPath = path + "/" + file;
-                if(fs.statSync(curPath).isDirectory()) {
-                    deleteFolderRecursive(curPath);
-                } else {
-                    fs.unlinkSync(curPath);
-                }
+    var copyNoI18nFolder = function(path, dist) {
+
+        if (!fs.existsSync(path)) {
+            return;
+        }
+
+        //get nlss use grunt._lang;
+        var nlsArr = grunt._lang || ['zh-cn','en-us','th-th'];
+
+        if (fs.statSync(path).isDirectory()) {
+
+            fs.readdirSync(path).forEach(function (file) {
+                var curPath = path + '/' +  file;
+                var distPath = dist + '/' + file;
+
+                //rm all nls array file from filename
+                nlsArr.forEach(function(nls){
+                    console.log('nls: ' + nls);
+                    console.log(curPath.indexOf(nls));
+                    if (curPath.indexOf(nls) > -1) {
+                        rimraf.sync(curPath);
+                    }
+                });
+
             });
-            fs.rmdirSync(path);
-        }
-    };
 
-    var removeItem = function(source, item){
-        var len = source.length;
-
-        while(len --) {
-            if (len in source && source[len] === item) {
-                source.splice(len, 1);
-            }
         }
 
-        return source;
+        //then copy
+        copyFolderRecursive(path, dist, true);
+
     };
+
 
     grunt.registerTask('processI18n', function (nls) {
-
-        deleteFolderRecursive(pathConfig.dist + '/i18n/' + nls);
 
         var i18nPath = pathConfig.tmp + '/i18n';
         fs.mkdirSync(i18nPath);
@@ -239,17 +249,45 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('mvImageMin', function (nls, base) {
-        moveImages(nls, base, pathConfig.dist + '/images/', pathConfig.dist + '/i18n/' + nls + '/images/');
+        mvSelfImages(nls, pathConfig.dist + '/images/', pathConfig.dist + '/i18n/' + nls + '/images/');
     });
 
     grunt.registerTask('clean', function (nls) {
-        deleteFolderRecursive(pathConfig.tmp);
-        deleteFolderRecursive(pathConfig.dist + '/images/');
-        deleteFolderRecursive(pathConfig.dist + '/i18n/' + nls);
+        rimraf.sync(pathConfig.tmp);
+        rimraf.sync(pathConfig.dist + '/images/');
+        rimraf.sync(pathConfig.dist + '/i18n/' + nls);
     });
 
     grunt.registerTask('copyImage', function (nls) {
         copyFolderRecursive(pathConfig.tmp + '/images/', pathConfig.dist + '/images/');
+    });
+
+
+    grunt.registerTask('copyCommonImages', function () {
+        //delet
+        rimraf.sync(pathConfig.dist + '/i18n/images');
+
+        copyNoI18nFolder(pathConfig.dist + '/images', pathConfig.dist + '/i18n/images');
+
+    });
+
+    grunt.registerTask('replaceCommon', function (nls) {
+        var cssPath = pathConfig.dist + '/i18n/' + nls + '/stylesheets';
+
+        if (!fs.existsSync(cssPath)) {
+            grunt.fail.warn('Task replaceCommon:' + bls + 'faild for cannot find css path: ' + cssPath);
+            return;
+        }
+
+        if (fs.statSync(cssPath).isDirectory()) {
+            fs.readdirSync(cssPath).forEach(function(file){
+                if (grunt.util._.endsWith(file, '.css')) {
+                    //now for two kinds for sprit path, we choose to replace common
+                    var output = grunt.file.read(cssPath + '/' + file).replace('../images/common','../../images/common');
+                    grunt.file.write(cssPath + '/' + file,output);
+                }
+            });
+        }
     });
 
     grunt.registerTask('build', function (project, nls) {
@@ -257,43 +295,13 @@ module.exports = function (grunt) {
         project = project ? project.toUpperCase() : 'WDJ';
         var nlss = nls ? nls.toLowerCase().split(',') : ['zh-cn'];
 
-        var base = 'en-us';
-
-        //check base for i18n
-        if (arguments.length === 3 && typeof arguments[2] === 'string') {
-            
-            if (arguments[2] === '' && nlss.length === 1) {
-                base = arguments[1];
-            } else {
-                base = arguments[2];
-            }
-
-            //del first
-            /** find bug in nls.indexOf
-             * If grunt build:WDJ:zh-cn:
-             * param base is '' 
-             */ 
-            if (nlss.indexOf(arguments[2]) > -1) { 
-                nlss = removeItem(nlss, base);
-            }
-            
-            /*for safe build 
-             *if '' no need to put nlss and it will add length
-             */
-            if (arguments[2] !== '') {
-                nlss.push(arguments[2]);
-            }
-            
-        } else if (arguments.length === 2 && nlss.length === 1) {
-            //single build
-            base = nls;
-        }
-
-
 
         console.log('project : ', project);
         console.log('nls : ', nls);
         console.log(nlss);
+
+        //set nlss in grunt
+        grunt._lang = nlss;
 
         nlss.forEach(function (nls) {
             var taskList = [
@@ -307,11 +315,16 @@ module.exports = function (grunt) {
                 'copyImage:' + nls,
                 'imagemin',
                 'copy:dist',
-                'mvImageMin:' + nls + ':' + base
+                'replaceCommon:' + nls,
+                'mvImageMin:' + nls
             ];
 
             grunt.task.run(taskList);
         });
+
+        //last copy common images
+        grunt.task.run('copyCommonImages');
+
     });
 
     grunt.registerTask('test:travis', ['build']);
