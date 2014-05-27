@@ -165,8 +165,6 @@ module.exports = function (grunt) {
 
                 //rm all nls array file from filename
                 nlsArr.forEach(function(nls){
-                    console.log('nls: ' + nls);
-                    console.log(curPath.indexOf(nls));
                     if (curPath.indexOf(nls) > -1) {
                         rimraf.sync(curPath);
                     }
@@ -282,8 +280,8 @@ module.exports = function (grunt) {
         if (fs.statSync(cssPath).isDirectory()) {
             fs.readdirSync(cssPath).forEach(function(file){
                 if (grunt.util._.endsWith(file, '.css')) {
-                    //now for two kinds for sprit path, we choose to replace common
-                    var output = grunt.file.read(cssPath + '/' + file).replace('../images/common','../../images/common');
+                    //now for two kinds for sprit path, we choose to replace common all
+                    var output = grunt.file.read(cssPath + '/' + file).replace(new RegExp('../images/common/','gm'),'../../images/common/');
                     grunt.file.write(cssPath + '/' + file,output);
                 }
             });
