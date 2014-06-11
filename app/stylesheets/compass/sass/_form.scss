@@ -516,7 +516,7 @@ progress {
 
     &.running {
         &::-webkit-progress-value {
-            background: url('../images/progress_bg_18X6.png') repeat-x;
+            background: url('../../images/progress_bg_18X6.png') repeat-x;
             background-color: #15bc49;
             -webkit-animation: {
                 duration: .5s;
@@ -529,7 +529,7 @@ progress {
 
    &.lighter {
         &::-webkit-progress-value {
-            background: url('../images/progress_bar_lighter.png') repeat-y;
+            background: url('../../images/progress_bar_lighter.png') repeat-y;
             background-color: #15bc49;
             -webkit-animation: {
                 duration: 1.5s;
