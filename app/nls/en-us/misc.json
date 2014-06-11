@@ -196,7 +196,7 @@
     "DATE_STR" : "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday",
     "VIDEO" : "Video",
     "EBOOK" : "Ebook",
-    "CONNECTION_TIP" : "为保护你的隐私，请使用 USB 线连接电脑",
+    "CONNECTION_TIP" : "For your privacy,Please use USB line to connect computer",
     "CONNECTION_BUTTON" : "Connection",
     "NO_RESPONSE_WITH_USB" : "插了 USB 线但是没反应？",
     "USB_ERROR_TIP_1" : "检查你的 USB 线是否完好，或者换一根 USB 线试试~",
